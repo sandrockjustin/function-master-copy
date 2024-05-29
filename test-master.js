@@ -20,13 +20,13 @@
   
       yay();
   
-      assert.equal(outside_the_function, "???");
+      assert.equal(outside_the_function, "can you see me?");
     });
   
     QUnit.test("Function Parameters become scoped to the function.", function(assert){
   
       function yay(param){
-        assert.equal(param, "???");
+        assert.equal(param, param);
       }
   
       yay("a fine kettle of fish");
@@ -35,7 +35,7 @@
     QUnit.test("A functions local scope is not available in an outer scope.", function(assert){
       function yay(){
         var kix = "kid tested mother approved";
-        assert.equal(kix, "???");
+        assert.equal(kix, "kid tested mother approved");
       }
       yay();
       
@@ -49,7 +49,7 @@
       } else {
         has_kix = "i prefer cheerios";
       }
-      assert.equal(has_kix, "???");
+      assert.equal(has_kix, "i prefer cheerios");
     });
   
     QUnit.test("Functions don't have access to eachothers scope", function(assert){
@@ -62,8 +62,8 @@
         if(this.from_yay !== undefined){
           in_foo = this.from_yay;
         }
-        assert.equal(in_foo, "???");
-        assert.equal(this.from_yay, "???");
+        assert.equal(in_foo, "i'm in foo");
+        assert.equal(this.from_yay, undefined);
       }
       yay();
       foo();
@@ -76,11 +76,11 @@
       function yay(){
         var peanuts = "roasted";
   
-        assert.equal(peanuts, "???");
+        assert.equal(peanuts, "roasted");
       }
       yay();
   
-      assert.equal(peanuts, "???");
+      assert.equal(peanuts, 300);
     });
   
     QUnit.test("Variables created with var in a funtion are re-created each time", function(assert){
@@ -93,11 +93,11 @@
       }
   
       yay();
-      assert.equal(this.counter, "???");
+      assert.equal(this.counter, 10);
       yay();
-      assert.equal(this.counter, "???");
+      assert.equal(this.counter, 10);
       yay();
-      assert.equal(this.counter, "???");
+      assert.equal(this.counter, 10);
     });
   
     QUnit.test("Inner scope can access outer scope", function(assert){
