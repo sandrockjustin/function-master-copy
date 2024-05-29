@@ -4,6 +4,17 @@
 
 function objectValues(object) {
     // code
+
+    let localArray = [];
+
+    for (var key in object){
+
+        localArray.push(object[key]);
+
+    }
+
+    return localArray;
+
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,6 +22,16 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
+
+    let localArray = [];
+
+    for (var key in object){
+
+        localArray.push(key);
+
+    }
+
+    return localArray.join(" ");
 
 }
 
@@ -20,6 +41,20 @@ function keysToString(object) {
 
 function valuesToString(object) {
     
+    let localArray = [];
+
+    for (var key in object){
+
+        if (typeof object[key] === "string"){
+
+            localArray.push(object[key]);
+        
+        };
+
+    };
+
+    return localArray.join(" ");
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,6 +62,20 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
+
+    if (Array.isArray(collection)){
+
+        return 'array';
+
+    } else if (typeof collection === 'object'){
+
+        if (collection !== null && collection !== undefined && !(collection instanceof Date)){
+
+            return 'object';
+            
+        }
+
+    }
     
 }
 
@@ -35,6 +84,8 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
+
+    let localArray = string.split();
     
 }
 
