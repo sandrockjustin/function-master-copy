@@ -97,15 +97,19 @@ function capitalizeWord(string) {
 
 function capitalizeAllWords(string) {
     
-    let localArray = string.split(" "); // splits each word into its own index
+
+  
+    let localArray = string.split(" ");
 
     for (let i = 0; i < localArray.length; i++){
 
-        localArray[i][0] = localArray[i][0].toUpperCase(); // this is capitalizing the first letter of whatever word is currently stored at index i 
+    localArray[i] = localArray[i].replace(localArray[i][0], localArray[i][0].toUpperCase());
 
     }
 
-    return localArray.join(" ");
+    console.log(localArray);
+  
+
 
 }
 
