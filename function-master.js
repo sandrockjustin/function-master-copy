@@ -103,12 +103,13 @@ function capitalizeAllWords(string) {
 
     for (let i = 0; i < localArray.length; i++){
 
+    // you have to do an assignment here; that was my main issue
+    // i was forgetting to actually reassign the values inside of the localArray; replace() appears to return a new array
     localArray[i] = localArray[i].replace(localArray[i][0], localArray[i][0].toUpperCase());
 
     }
 
-    console.log(localArray);
-  
+    return localArray.join(" ");
 
 
 }
@@ -118,6 +119,8 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
+
+    return "Welcome " + object["name"] + "!";
 
 }
 
