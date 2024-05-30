@@ -96,11 +96,11 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    
 
-  
+    // dissected the string into an array so that we can access and modify words individually
     let localArray = string.split(" ");
 
+    // looping over every index in the localArray (i.e. the strings) to perform an action
     for (let i = 0; i < localArray.length; i++){
 
     // you have to do an assignment here; that was my main issue
@@ -109,6 +109,7 @@ function capitalizeAllWords(string) {
 
     }
 
+    // undoing our dissection on line 100
     return localArray.join(" ");
 
 
@@ -120,7 +121,7 @@ function capitalizeAllWords(string) {
 
 function welcomeMessage(object) {
 
-    return "Welcome " + object["name"] + "!";
+    return "Welcome " + capitalizeWord(object["name"]) + "!";
 
 }
 
@@ -130,6 +131,8 @@ function welcomeMessage(object) {
 
 function profileInfo(object) {
 
+    return capitalizeWord(object['name']) + " is a " + capitalizeWord(object['species']);
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -137,6 +140,16 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
+
+    if (object.hasOwnProperty('noises') && object['noises'].length !== 0){
+
+        return object['noises'].join(" ");
+
+    } else {
+
+        return "there are no noises";
+
+    }
 
 }
 
@@ -146,6 +159,20 @@ function maybeNoises(object) {
 
 function hasWord(string, word) {
 
+    let localArray = string.split(" ");
+
+    for (let i = 0; i < localArray.length; i++){
+
+        if (localArray[i] === word){
+
+            return true;
+
+        }
+
+    }
+
+    return false;
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -154,13 +181,31 @@ function hasWord(string, word) {
 
 function addFriend (name, object) {
 
+    object['friends'].push(name); 
+    return object;
+
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function isFriend(name, object) {
+function isFriend(name, object){
+
+    if (object.hasOwnProperty('friends')){
+
+        for (let i = 0; i < object['friends'].length; i++){
+
+            if (object['friends'][i] === name) {
+    
+                return true;
+    
+            }
+        
+        }
+    }
+
+    return false;
 
 }
 
@@ -170,6 +215,20 @@ function isFriend(name, object) {
 
 function nonFriends(name, array) {
 
+    let noRelationList = [];
+
+    for (let i = 0; i < array.length; i++){
+
+        if (isFriend(name, array[i]) === false && name !== array[i]['name']){
+
+            noRelationList.push(array[i]['name']);
+
+        }
+
+    }
+
+    return noRelationList;
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -178,6 +237,18 @@ function nonFriends(name, array) {
 
 function updateObject(object, key, value) {
 
+    if (object.hasOwnProperty(key)){
+
+        object[key] = value;
+        return object;
+      
+    } else {
+
+        object[key] = value;
+        return object;
+
+    }
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -185,7 +256,19 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+  
+    for (let i = 0; i < array.length; i++){
+      
+      if (object.hasOwnProperty(array[i])){
+        
+        delete object[array[i]];
+        
+      } 
+      
+    }
+    
+    return object;
+    
 }
 
 //////////////////////////////////////////////////////////////////////
