@@ -277,6 +277,13 @@ function removeProperties(object, array) {
 
 function dedup(array) {
 
+    // I had to look this one up
+    // the ... is an operator that iterates over every item of an array/object
+    // the Set() is a native object that does not allow for items to repeat
+    // by declaring ...new Set() we are iterating over the input array and declaring it as a new instance of Set()
+    let localArray = [...new Set(array)];
+    return localArray;
+
 }
 
 //////////////////////////////////////////////////////////////////////
